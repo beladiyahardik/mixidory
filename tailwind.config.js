@@ -4,7 +4,21 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '128': '32rem',
+        "50": '50%',
+      },
+      container: {
+        center: true,
+      },
+      backgroundImage: {
+        'imgpost': 'url(/images/test-img-post.WEBP)',
+      },
+      minHeight: {
+        '20vh': '80vh',
+      },
+    },
   },
   plugins: [],
 };
