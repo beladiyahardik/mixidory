@@ -1,14 +1,11 @@
-import React from 'react'
-import ImgPost from './posts/ImgPost'
-import TextPost from './posts/TextPost'
+import React from 'react';
+import Post from '../../component/posts/Post';
 
 const index = () => {
     return (
         <>
             <div className='container'>
-                <TextPost />
-                <TextPost />
-                <ImgPost />
+                <Post />
             </div>
         </>
     )
