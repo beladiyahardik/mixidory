@@ -1,6 +1,7 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Auth, KEY } from "../config/auth";
 import { LoginAction } from "../redux/action/LoginAction";
 import styles from "../styles/Home.module.css";
 import Layout from "./layout";
@@ -12,6 +13,7 @@ export default function Home() {
   });
 
   const dispatch = useDispatch();
+  const isLogin = useReducer((state) => state);
 
   const login = () => {
     if (user.username && user.password) {
@@ -21,6 +23,13 @@ export default function Home() {
       dispatch(LoginAction(formData));
     }
   };
+
+  useEffect(() => {
+    console.log("isLogin", isLogin);
+    if (isLogin.status && isLogin.username) {
+      window.location = "/home";
+    }
+  }, [isLogin]);
 
   return (
     <div className={styles.container}>

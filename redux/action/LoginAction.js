@@ -7,6 +7,7 @@ import {
 } from "../type";
 import axios from "axios";
 import { LOGIN_API } from "../../config/API";
+import { Auth, KEY } from "../../config/auth";
 
 export const isLoginAction = (OBJ) => async (dispatch) => {
   console.log("CALL");
@@ -34,6 +35,8 @@ export const LoginAction = (OBJ) => async (dispatch) => {
         payload: res.data,
       });
       if (res.data.status == 200) {
+        Auth.set(KEY.LOGIN, true);
+        Auth.set(KEY.USER, res.data.username);
         dispatch(isLoginAction(true));
       }
     });

@@ -5,14 +5,16 @@ const LOGINSTATE = {
   Err: "",
 };
 
-const isLogin = false;
+const LOGGEDIN = {
+  login: false,
+};
 
-export const isLoginReducer = (state = isLogin, action) => {
+export const isLoginReducer = (state = LOGGEDIN, action) => {
   switch (action.type) {
     case IS_LOGIN:
       return {
         ...state,
-        isLogin: action.payload,
+        login: action.payload,
       };
     default:
       return state;
