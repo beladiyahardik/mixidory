@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { useEffect, useReducer, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useReducer } from "react-redux";
 import { Auth, KEY } from "../config/auth";
 import { LoginAction } from "../redux/action/LoginAction";
 import styles from "../styles/Home.module.css";
@@ -13,7 +13,7 @@ export default function Home() {
   });
 
   const dispatch = useDispatch();
-  const isLogin = useReducer((state) => state);
+  const isLogin = useReducer((state) => state.login.login);
 
   const login = () => {
     if (user.username && user.password) {
