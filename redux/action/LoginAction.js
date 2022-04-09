@@ -10,7 +10,6 @@ import { LOGIN_API } from "../../config/API";
 import { Auth, KEY } from "../../config/auth";
 
 export const isLoginAction = (OBJ) => async (dispatch) => {
-  console.log("CALL");
   dispatch({
     type: IS_LOGIN,
     payload: OBJ,

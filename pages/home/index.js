@@ -5,7 +5,13 @@ const index = () => {
     return (
         <>
             <div className='container'>
+                <div className='homePostContainer'>
                 <Post />
+                <Post />
+                <Post />
+                <Post />
+                <Post />
+                </div>
             </div>
         </>
     )

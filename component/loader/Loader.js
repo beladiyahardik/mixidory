@@ -1,10 +1,17 @@
 import React from "react";
-import BarLoader from "react-spinners/BarLoader";
+import { useSelector } from 'react-redux';
 
 const Loader = () => {
+  const ISLOADING = useSelector((state) => state.isLoading);
   return (
     <div>
-      <BarLoader loading={true} color='red' />
+      {
+        ISLOADING ?
+          <div className="col-sm-6 text-center bg-loader">
+            <div className="loader"></div>
+          </div>
+          : ''
+        }
     </div>
   );
 };

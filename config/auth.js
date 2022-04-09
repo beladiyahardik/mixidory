@@ -8,7 +8,7 @@ const ISSERVER = typeof window === "undefined";
 export class Auth {
   static get(key) {
     if (!ISSERVER) {
-      sessionStorage.getItem(key);
+      return sessionStorage.getItem(key);
     }
   }
 

@@ -1,10 +1,12 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useDispatch, useReducer } from "react-redux";
-import { Auth, KEY } from "../config/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from 'next/router';
 import { LoginAction } from "../redux/action/LoginAction";
 import styles from "../styles/Home.module.css";
-import Layout from "./layout";
+import { Auth, KEY } from "../config/auth";
+import Link from 'next/link';
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [user, setUser] = useState({
@@ -13,7 +15,8 @@ export default function Home() {
   });
 
   const dispatch = useDispatch();
-  const isLogin = useReducer((state) => state.login.login);
+  const router = useRouter()
+  const isLogin = useSelector((state) => state.login.LOGIN);
 
   const login = () => {
     if (user.username && user.password) {
@@ -25,9 +28,13 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log("isLogin", isLogin);
-    if (isLogin.status && isLogin.username) {
-      window.location = "/home";
+    if (isLogin) {
+      let USER = Auth.get(KEY.LOGIN)
+      if (USER) {
+        router.push("/home");
+      }else{
+        toast.error('Something went wrong 😫');
+      }
     }
   }, [isLogin]);
 
@@ -40,37 +47,39 @@ export default function Home() {
           content='Welcome to the worlds creative diary.'
         />
       </Head>
-      <Layout>
-        <section className='flex justify-center items-center h-screen bg-gray-100'>
-          <div className='max-w-md w-full bg-white rounded p-6 space-y-4'>
-            <div className='mb-4'>
-              <p className='text-gray-600'>Sign In</p>
-              <h2 className='text-xl font-bold'>Join our community</h2>
-            </div>
-            <div>
-              <input
-                className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
-                type='text'
-                placeholder='Username'
-                onChange={(e) => setUser({ ...user, username: e.target.value })}
-              />
-            </div>
-            <div>
-              <input
-                className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
-                type='password'
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
-                placeholder='Password'
-              />
-            </div>
-            <div>
-              <button
-                className='w-full py-4 bg-blue-600 hover:bg-blue-700 rounded text-sm font-bold text-gray-50 transition duration-200'
-                onClick={login}>
-                Sign In
-              </button>
-            </div>
-            {/* <div className='flex items-center justify-between'>
+      <section className='flex justify-center items-center h-screen bg-gray-100'>
+        <div className='max-w-md w-full bg-white rounded p-6 space-y-4'>
+          <div className='mb-4'>
+            <p className='text-gray-600'>Sign In</p>
+            <h2 className='text-xl font-bold'>Join our community</h2>
+          </div>
+          <div>
+            <input
+              className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
+              type='text'
+              placeholder='Username'
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
+            />
+          </div>
+          <div>
+            <input
+              className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
+              type='password'
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              placeholder='Password'
+            />
+          </div>
+          <div>
+            <button
+              className='w-full py-4 bg-blue-600 hover:bg-blue-700 rounded text-sm font-bold text-gray-50 transition duration-200'
+              onClick={login}>
+              Sign In
+            </button>
+          </div>
+          <div>
+            Create new <Link href="/signup"><span className='text-blue-500'>account</span></Link>
+          </div>
+          {/* <div className='flex items-center justify-between'>
             <div className='flex flex-row items-center'>
               <input
                 type='checkbox'
@@ -88,9 +97,8 @@ export default function Home() {
               </a>
             </div>
           </div> */}
-          </div>
-        </section>
-      </Layout>
+        </div>
+      </section>
     </div>
   );
 }
