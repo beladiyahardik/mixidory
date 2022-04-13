@@ -16,8 +16,8 @@ const Footer = () => {
             <div className={`cursor-pointer flex justify-center items-center ${pathname === '/explore' ? 'menuIcons' : ''}`}><Image src='/icons/explore.png' width='24' height='24' /></div>
             </Link>
 
-            <Link href='/home'>
-            <div className={`cursor-pointer flex justify-center items-center ${pathname === '/notification' ? 'menuIcons' : ''}`}><Image src='/icons/notification.png' width='24' height='24' /></div>
+            <Link href='/profile'>
+            <div className={`cursor-pointer flex justify-center items-center ${pathname === '/profile' ? 'menuIcons' : ''}`}><Image src='/icons/notification.png' width='24' height='24' /></div>
             </Link>
 
             <Link href='/home'>
