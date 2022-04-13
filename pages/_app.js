@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/app.css";
 import "../styles/loader.css";
+import "../styles/responsive.css"
 import 'react-toastify/dist/ReactToastify.css';
 import store from "../redux/store";
 import { Provider } from "react-redux";

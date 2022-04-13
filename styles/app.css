@@ -113,3 +113,23 @@
   align-items: center;
   padding: 10px;
 }
+
+.profile{
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.profile-page{
+  padding-top: 150px;
+}
+
+.profile-pic img{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+
+.userName{
+  font-size: 24px;
+  font-weight: 600;
+}
