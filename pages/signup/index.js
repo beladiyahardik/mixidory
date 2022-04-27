@@ -2,40 +2,38 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { SignupAction } from "../../redux/action/SignupAction";
 
-const index = () => {
+const Index = () => {
   const [user, setUser] = useState({
     username: undefined,
     password: undefined,
     confirmPassword: undefined,
     gender: undefined,
-    birthday: undefined
+    birthday: undefined,
   });
 
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-  }
+  };
 
   const signup = () => {
     if (user.password !== user.confirmPassword) {
-      toast.error('Password not matched');
-    }
-    else if (user.username && user.password && user.birthday && user.gender) {
+      toast.error("Password not matched");
+    } else if (user.username && user.password && user.birthday && user.gender) {
       const formData = new FormData();
-      formData.append('username', user.username);
-      formData.append('password', user.password);
-      formData.append('gender', user.gender);
-      formData.append('birthday', user.birthday);
+      formData.append("username", user.username);
+      formData.append("password", user.password);
+      formData.append("gender", user.gender);
+      formData.append("birthday", user.birthday);
       dispatch(SignupAction(formData));
+    } else {
+      toast.info("All fields required");
     }
-    else{
-      toast.info('All fields required');
-    }
-  }
+  };
 
   return (
     <>
@@ -59,7 +57,7 @@ const index = () => {
                 className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
                 type='text'
                 placeholder='Username'
-                name="username"
+                name='username'
                 onChange={(e) => handleChange(e)}
               />
             </div>
@@ -68,17 +66,16 @@ const index = () => {
                 className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
                 type='password'
                 placeholder='Password'
-                name="password"
+                name='password'
                 onChange={(e) => handleChange(e)}
               />
-
             </div>
             <div className='relative'>
               <input
                 className='w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-200 rounded text-gray-600'
                 type='password'
                 placeholder='confirm Password'
-                name="confirmPassword"
+                name='confirmPassword'
                 onChange={(e) => handleChange(e)}
               />
             </div>
@@ -114,12 +111,18 @@ const index = () => {
               <br />
             </div>
             <div>
-              <button className='w-full py-4 bg-blue-600 hover:bg-blue-700 rounded text-sm font-bold text-gray-50 transition duration-200' onClick={signup}>
+              <button
+                className='w-full py-4 bg-blue-600 hover:bg-blue-700 rounded text-sm font-bold text-gray-50 transition duration-200'
+                onClick={signup}>
                 Sign up
               </button>
             </div>
             <div>
-              Already have an <Link href="/"><span className="text-blue-500 cursor-pointer">account</span></Link>?
+              Already have an{" "}
+              <Link href='/'>
+                <span className='text-blue-500 cursor-pointer'>account</span>
+              </Link>
+              ?
             </div>
           </div>
         </section>
@@ -128,4 +131,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

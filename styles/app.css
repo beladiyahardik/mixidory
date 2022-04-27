@@ -5,7 +5,42 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Varela Round', sans-serif;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+/* CREATE POST */
+.createPost{
+  margin-top: 20px;
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createPostContainer{
+  width: 550px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+}
+
+.createPostContainer .userAvtar img{
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid #3e3e3e;
+}
+
+.createPostContainer .postInput{
+  margin-left: 10px;
+}
+
+.createPostContainer .postInput textarea{
+  width: 450px;
+  /* min-height: 45px; */
+  padding: 0 auto;
+  resize: horizontal;
+  border-bottom: 2px solid #035397;
+  outline: none;
 }
 
 /* ==>Post<== */

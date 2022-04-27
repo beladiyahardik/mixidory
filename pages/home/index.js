@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CreatePost from "../../component/posts/CreatePost";
 import Post from "../../component/posts/Post";
 import { Auth, KEY } from "../../config/auth";
 import { GetAllPostAction } from "../../redux/action/PostAction";
 
-const index = () => {
+const Index = () => {
   const [post, setPost] = useState([]);
   const dispatch = useDispatch();
   const AllPost = useSelector((state) => state.allPost.POST);
@@ -30,6 +31,7 @@ const index = () => {
   return (
     <>
       <div className='container'>
+        <CreatePost />
         <div className='homePostContainer'>
           {post.length ? post.map((ele, i) => <Post key={i} data={ele} />) : ""}
         </div>
@@ -38,4 +40,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
