@@ -5,6 +5,7 @@ const Index = () => {
   return (
     <div className='banner'>
       <h1>Explore</h1>
+      <img src='images/Banner.jpg' />
     </div>
   );
 };
