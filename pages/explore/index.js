@@ -1,12 +1,12 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
-const Explore = () => {
+const Index = () => {
   return (
     <div className='banner'>
       <h1>Explore</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Explore
+export default Index;
